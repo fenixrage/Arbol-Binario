@@ -167,7 +167,11 @@ namespace WindowsFormsApp1.Lógica
 
             if (tiene)
             {
-                cadena = cadena.Substring(1, cadena.Length - 2);
+               
+                 cadena = cadena.Substring(1, cadena.Length - 2);
+                
+               // cadena = cadena.Replace("(", "");
+               // cadena = cadena.Replace(")", "");
 
             }
 
@@ -179,9 +183,146 @@ namespace WindowsFormsApp1.Lógica
             String cadena = "";
 
             cadena = pCadena.Replace(" ", "");
+            
 
             return cadena;
         }
+
+        public static int hacerOperaciones(String operacion)
+        {
+            int resultado= 0;
+            if(operacion.Equals(null))
+            {
+                throw new Exception("No hay nada para operar");
+            }
+            ////AND
+            else if (operacion.Equals("0*0"))
+            {
+                resultado = 0;
+            }
+            else if(operacion.Equals("0*1"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1*0"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1*1"))
+            {
+                resultado = 1;
+            }
+            ////OR
+            else if (operacion.Equals("0+0"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("0+1"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1+0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1+1"))
+            {
+                resultado = 1;
+            }
+            ////NAND
+            else if (operacion.Equals("0&0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("0%1"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1&0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1&1"))
+            {
+                resultado = 0;
+            }
+            ////NOR
+            else if (operacion.Equals("0%0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("0%1"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1%0"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1%1"))
+            {
+                resultado = 0;
+            }
+            ////XOR
+            else if (operacion.Equals("0#0"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("0#1"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1#0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1#1"))
+            {
+                resultado = 0;
+            }
+            ////XNOR
+            else if (operacion.Equals("0/0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("0/1"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1/0"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1/1"))
+            {
+                resultado = 1;
+            }
+            ////MAT
+            else if (operacion.Equals("0$0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("0$1"))
+            {
+                resultado = 0;
+            }
+            else if (operacion.Equals("1$0"))
+            {
+                resultado = 1;
+            }
+            else if (operacion.Equals("1$1"))
+            {
+                resultado = 0;
+            }
+            else
+            {
+                throw new Exception("No se pudo hacer la operación");    
+            }
+
+            return resultado;
+
+        }
+
 
     }
 

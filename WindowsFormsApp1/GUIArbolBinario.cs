@@ -54,7 +54,8 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             String cad = ServicioArbolBinario.quitarParentesisExternos(txtCadena.Text);
-            
+            cad = ServicioArbolBinario.quitarEspacios(cad);
+
             txtCadena.Text = cad;
         }
     }
