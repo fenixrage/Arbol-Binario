@@ -167,7 +167,11 @@ namespace WindowsFormsApp1.Lógica
 
             if (tiene)
             {
-                cadena = cadena.Substring(1, cadena.Length - 2);
+               
+                 cadena = cadena.Substring(1, cadena.Length - 2);
+                
+               // cadena = cadena.Replace("(", "");
+               // cadena = cadena.Replace(")", "");
 
             }
 
@@ -179,6 +183,7 @@ namespace WindowsFormsApp1.Lógica
             String cadena = "";
 
             cadena = pCadena.Replace(" ", "");
+            
 
             return cadena;
         }
