@@ -323,10 +323,29 @@ namespace WindowsFormsApp1.Lógica
 
         }
 
+        public static bool verificarSiEsAtomica(String cad)
+        {
+            int cont = 0;
+            String cadena = quitarParentesisExternos(cad);
 
+            for (int i = 0; i < cad.Length; i++)
+            {
+                if (cad.Contains('%') || cad.Contains('$') || cad.Contains('&') ||
+                    cad.Contains('#') || cad.Contains("/") || cad.Contains("*") || cad.Contains("+"))
+                {
+                    cont++;
+                    return true;
+                }
+                else
+                {
+                    throw new Exception("Esta operación no es atómica");
+                }
+            }
+            return false;
+        }
     }
  
-
+    
 
 }
 

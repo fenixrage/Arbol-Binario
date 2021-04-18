@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
+            ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
             String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
             txtOrdenes.Text = cadena;
         }
@@ -46,7 +47,6 @@ namespace WindowsFormsApp1
             String cad = ServicioArbolBinario.quitarParentesisExternos(txtCadena.Text.Trim());
             ServicioArbolBinario.quitarEspacios(cad);
             ServicioArbolBinario.encontrarOperadorCentral(cad);
-            ServicioArbolBinario.crearArbol(cad);
             txtCadena.Text = cad;
         }
     }
