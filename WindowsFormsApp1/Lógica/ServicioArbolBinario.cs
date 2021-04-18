@@ -188,9 +188,9 @@ namespace WindowsFormsApp1.Lógica
             return cadena;
         }
 
-        public static int hacerOperaciones(String operacion)
+        public static String hacerOperaciones(String operacion)
         {
-            int resultado= 0;
+            String resultado= "0";
             if(operacion.Equals(null))
             {
                 throw new Exception("No hay nada para operar");
@@ -198,121 +198,121 @@ namespace WindowsFormsApp1.Lógica
             ////AND
             else if (operacion.Equals("0*0"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if(operacion.Equals("0*1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1*0"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1*1"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             ////OR
             else if (operacion.Equals("0+0"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("0+1"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1+0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1+1"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             ////NAND
             else if (operacion.Equals("0&0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("0%1"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1&0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1&1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             ////NOR
             else if (operacion.Equals("0%0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("0%1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1%0"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1%1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             ////XOR
             else if (operacion.Equals("0#0"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("0#1"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1#0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1#1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             ////XNOR
             else if (operacion.Equals("0/0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("0/1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1/0"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1/1"))
             {
-                resultado = 1;
+                resultado = "0";
             }
             ////MAT
             else if (operacion.Equals("0$0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("0$1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else if (operacion.Equals("1$0"))
             {
-                resultado = 1;
+                resultado = "1";
             }
             else if (operacion.Equals("1$1"))
             {
-                resultado = 0;
+                resultado = "0";
             }
             else
             {
@@ -325,43 +325,7 @@ namespace WindowsFormsApp1.Lógica
 
 
     }
-     public static char hacerOperaciones(String operacion)
-        {
-            char resultado='0';
-
-            if (operacion.Equals("0*0"))
-            {
-                resultado = '0';
-            }
-            if(operacion.Equals("0*1"))
-            {
-                resultado = '0';
-            }
-            if(operacion.Equals("1*0"))
-            {
-                resultado = '0';
-            }
-            if(operacion.Equals("1*1"))
-            {
-                resultado = '1';
-            }
-            if(operacion.Equals("0+0"))
-            {
-                resultado = '0';
-            }
-            if(operacion.Equals("0+1"))
-            {
-                resultado = '1';
-            }
-            if(operacion.Equals("1+0"))
-            {
-                resultado = '1';
-            }if()
-
-            return resultado;
-
-        }
-
+ 
 
 
 }

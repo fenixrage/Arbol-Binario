@@ -20,30 +20,20 @@ namespace WindowsFormsApp1
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
-            String cad= "";
-            String cadena = txtCadena.Text.Trim();
-            cad = ServicioArbolBinario.quitarParentesisExternos(txtCadena.Text.Trim());
-            cad = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), cadena);
-
-            txtOrdenes.Text = cad;
+            String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
+            txtOrdenes.Text = cadena;
         }
 
         private void btnInOrden_Click(object sender, EventArgs e)
         {
-            String cad = "";
-            String cadena = txtCadena.Text.Trim();
-            cad = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(), cadena);
-
-            txtOrdenes.Text = cad;
+            String cadena = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
+            txtOrdenes.Text = cadena;
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
-            String cad = "";
-            String cadena = txtCadena.Text.Trim();
-            cad = ServicioArbolBinario.recorrePostOrden(ServicioArbolBinario.getRaiz(), cadena);
-
-            txtOrdenes.Text = cad;
+            String cadena = ServicioArbolBinario.recorrePostOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
+            txtOrdenes.Text = cadena;
         }
 
         private void txtLimpiar_Click(object sender, EventArgs e)
@@ -53,9 +43,10 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String cad = ServicioArbolBinario.quitarParentesisExternos(txtCadena.Text);
-            cad = ServicioArbolBinario.quitarEspacios(cad);
-
+            String cad = ServicioArbolBinario.quitarParentesisExternos(txtCadena.Text.Trim());
+            ServicioArbolBinario.quitarEspacios(cad);
+            ServicioArbolBinario.encontrarOperadorCentral(cad);
+            ServicioArbolBinario.crearArbol(cad);
             txtCadena.Text = cad;
         }
     }
