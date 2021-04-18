@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         {
             ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
             String resultado = null;
+
             String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), resultado);
             txtOrdenes.Text = cadena;
         }
