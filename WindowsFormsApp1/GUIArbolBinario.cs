@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         {
             ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
             String resultado = null;
-
             String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), resultado);
             txtOrdenes.Text = cadena;
         }
@@ -46,6 +45,7 @@ namespace WindowsFormsApp1
         private void txtLimpiar_Click(object sender, EventArgs e)
         {
             txtCadena.Clear();
+            txtOrdenes.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,7 +55,20 @@ namespace WindowsFormsApp1
             ServicioArbolBinario.encontrarOperadorCentral(cad);
             txtCadena.Text = cad;
         }
-        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool cadena = ServicioArbolBinario.verificarSiEsAtomica(txtCadena.Text.Trim());
+            if (cadena == true)
+            {
+                MessageBox.Show("Es operacion atomica");
+            }
+            else
+            {
+                MessageBox.Show("No es atomica");
+            }
+        }
+
 
         //prueba para el boton de verificar si es atomica
 
