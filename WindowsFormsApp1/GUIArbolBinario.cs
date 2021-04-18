@@ -21,19 +21,24 @@ namespace WindowsFormsApp1
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
             ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
-            String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
+            String resultado = null;
+            String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), resultado);
             txtOrdenes.Text = cadena;
         }
 
         private void btnInOrden_Click(object sender, EventArgs e)
         {
-            String cadena = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
+            ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
+            String resultado = null;
+            String cadena = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(), resultado);
             txtOrdenes.Text = cadena;
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
-            String cadena = ServicioArbolBinario.recorrePostOrden(ServicioArbolBinario.getRaiz(), txtCadena.Text.Trim());
+            ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
+            String resultado = null;
+            String cadena = ServicioArbolBinario.recorrePostOrden(ServicioArbolBinario.getRaiz(), resultado);
             txtOrdenes.Text = cadena;
         }
 
