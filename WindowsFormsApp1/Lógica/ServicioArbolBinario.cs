@@ -338,7 +338,7 @@ namespace WindowsFormsApp1.Lógica
                 }
                 else
                 {
-                    throw new Exception("Esta operación no es atómica");
+                    return false;
                 }
             }
             return false;

@@ -49,5 +49,23 @@ namespace WindowsFormsApp1
             ServicioArbolBinario.encontrarOperadorCentral(cad);
             txtCadena.Text = cad;
         }
+        
+
+        //prueba para el boton de verificar si es atomica
+
+
+        /*
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool cadena = ServicioArbolBinario.verificarSiEsAtomica(txtCadena.Text.Trim());
+            if(cadena ==true)
+            {
+                MessageBox.Show("Es operacion atomica");
+            }
+            else
+            {
+                MessageBox.Show("No es atomica");
+            }
+        }*/
     }
 }
