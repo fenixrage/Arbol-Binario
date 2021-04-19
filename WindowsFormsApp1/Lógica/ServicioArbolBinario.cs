@@ -200,12 +200,11 @@ namespace WindowsFormsApp1.Lógica
 
         public static String quitarEspacios(String pCadena)
         {
-            String cadena = "";
+            String texto = pCadena;
 
-            cadena = pCadena.Replace(" ", "");
-            
-
-            return cadena;
+            texto = texto.Replace(" ", "");
+   
+            return texto;
         }
 
         public static String hacerOperaciones(String operacion)

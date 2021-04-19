@@ -50,8 +50,10 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String cad = ServicioArbolBinario.quitarParentesisExternos(txtCadena.Text.Trim());
-            ServicioArbolBinario.quitarEspacios(cad);
+            String cad = txtCadena.Text;
+
+            cad = ServicioArbolBinario.quitarParentesisExternos(cad);
+            cad = ServicioArbolBinario.quitarEspacios(cad);
             ServicioArbolBinario.encontrarOperadorCentral(cad);
             txtCadena.Text = cad;
         }
