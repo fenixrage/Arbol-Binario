@@ -51,7 +51,6 @@ namespace WindowsFormsApp1.Lógica
 
         }
 
-
         public static void metodoRecursivo(Nodo actual)
         {
 
@@ -124,8 +123,29 @@ namespace WindowsFormsApp1.Lógica
             return -1;
         }
 
+        public static bool verificarSiEsAtomica(String cadena)
+        {
+            int cont = 0;
+            foreach (char c in cadena)
+            {
+                if (c == '(')
+                {
+                    cont = cont + 1;
+                }
+                else if (c == ')')
+                {
+                    cont = cont - 1;
+                }
+            }
+            if (cont == 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
-        private static bool hayParentesisExternos(String cadena)
+
+        public static bool hayParentesisExternos(String cadena)
         {
             int cont = 0;
             int cuantos = 0;
@@ -190,159 +210,82 @@ namespace WindowsFormsApp1.Lógica
 
         public static String hacerOperaciones(String operacion)
         {
-            String resultado= "0";
-            if(operacion.Equals(null))
-            {
-                throw new Exception("No hay nada para operar");
-            }
+            String resultado= null;
             ////AND
-            else if (operacion.Equals("0*0"))
-            {
-                resultado = "0";
-            }
-            else if(operacion.Equals("0*1"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1*0"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1*1"))
-            {
-                resultado = "1";
-            }
+            resultado = operacion.Replace(("(0*0)"), ("0"));
+            resultado = operacion.Replace(("(0*1)"), ("0"));
+            resultado = operacion.Replace(("(1*0)"), ("0"));
+            resultado = operacion.Replace(("(1*1)"), ("1"));
+            resultado = operacion.Replace(("0*0"), ("0"));
+            resultado = operacion.Replace(("0*1"), ("0"));
+            resultado = operacion.Replace(("1*0"), ("0"));
+            resultado = operacion.Replace(("1*1"), ("1"));
+
             ////OR
-            else if (operacion.Equals("0+0"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("0+1"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1+0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1+1"))
-            {
-                resultado = "1";
-            }
+            resultado = operacion.Replace(("(0+0)"), ("0"));
+            resultado = operacion.Replace(("(0+1)"), ("1"));
+            resultado = operacion.Replace(("(1+0)"), ("1"));
+            resultado = operacion.Replace(("(1+1)"), ("1"));
+            resultado = operacion.Replace(("0+0"), ("0"));
+            resultado = operacion.Replace(("0+1"), ("1"));
+            resultado = operacion.Replace(("1+0"), ("1"));
+            resultado = operacion.Replace(("1+1"), ("1"));
+
             ////NAND
-            else if (operacion.Equals("0&0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("0%1"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1&0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1&1"))
-            {
-                resultado = "0";
-            }
+            resultado = operacion.Replace(("(0&0)"), ("1"));
+            resultado = operacion.Replace(("(0&1)"), ("1"));
+            resultado = operacion.Replace(("(1&0)"), ("1"));
+            resultado = operacion.Replace(("(1&1)"), ("0"));
+            resultado = operacion.Replace(("0&0"), ("1"));
+            resultado = operacion.Replace(("0&1"), ("1"));
+            resultado = operacion.Replace(("1&0"), ("1"));
+            resultado = operacion.Replace(("1&1"), ("0"));
+
             ////NOR
-            else if (operacion.Equals("0%0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("0%1"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1%0"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1%1"))
-            {
-                resultado = "0";
-            }
+            resultado = operacion.Replace(("(0%0)"), ("1"));
+            resultado = operacion.Replace(("(0%1)"), ("0"));
+            resultado = operacion.Replace(("(1%0)"), ("0"));
+            resultado = operacion.Replace(("(1%1)"), ("0"));
+            resultado = operacion.Replace(("0&0"), ("1"));
+            resultado = operacion.Replace(("0%1"), ("0"));
+            resultado = operacion.Replace(("1%0"), ("0"));
+            resultado = operacion.Replace(("1%1"), ("0"));
+
+
             ////XOR
-            else if (operacion.Equals("0#0"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("0#1"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1#0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1#1"))
-            {
-                resultado = "0";
-            }
+            resultado = operacion.Replace(("(0#0)"), ("0"));
+            resultado = operacion.Replace(("(0#1)"), ("1"));
+            resultado = operacion.Replace(("(1#0)"), ("1"));
+            resultado = operacion.Replace(("(1#1)"), ("0"));
+            resultado = operacion.Replace(("0#0"), ("0"));
+            resultado = operacion.Replace(("0#1"), ("1"));
+            resultado = operacion.Replace(("1#0"), ("1"));
+            resultado = operacion.Replace(("1#1"), ("0"));
+
             ////XNOR
-            else if (operacion.Equals("0/0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("0/1"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1/0"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1/1"))
-            {
-                resultado = "0";
-            }
+            resultado = operacion.Replace(("(0/0)"), ("1"));
+            resultado = operacion.Replace(("(0/1)"), ("0"));
+            resultado = operacion.Replace(("(1/0)"), ("0"));
+            resultado = operacion.Replace(("(1/1)"), ("0"));
+            resultado = operacion.Replace(("0/0"), ("1"));
+            resultado = operacion.Replace(("0/1"), ("0"));
+            resultado = operacion.Replace(("1/0"), ("0"));
+            resultado = operacion.Replace(("1/1"), ("0"));
+
             ////MAT
-            else if (operacion.Equals("0$0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("0$1"))
-            {
-                resultado = "0";
-            }
-            else if (operacion.Equals("1$0"))
-            {
-                resultado = "1";
-            }
-            else if (operacion.Equals("1$1"))
-            {
-                resultado = "0";
-            }
-            else
-            {
-                throw new Exception("No se pudo hacer la operación");    
-            }
+            resultado = operacion.Replace(("(0$0)"), ("1"));
+            resultado = operacion.Replace(("(0$1)"), ("0"));
+            resultado = operacion.Replace(("(1$0)"), ("1"));
+            resultado = operacion.Replace(("(1$1)"), ("0"));
+            resultado = operacion.Replace(("0$0"), ("1"));
+            resultado = operacion.Replace(("0$1"), ("0"));
+            resultado = operacion.Replace(("1$0"), ("1"));
+            resultado = operacion.Replace(("1$1"), ("0"));
 
             return resultado;
 
         }
 
-        public static bool verificarSiEsAtomica(String cad)
-        {
-            int cont = 0;
-            String cadena = quitarParentesisExternos(cad);
-
-            for (int i = 0; i < cad.Length; i++)
-            {
-                if (cad.Contains('%') || cad.Contains('$') || cad.Contains('&') ||
-                    cad.Contains('#') || cad.Contains("/") || cad.Contains("*") || cad.Contains("+"))
-                {
-                    cont++;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
     }
  
     
