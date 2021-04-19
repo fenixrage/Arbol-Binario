@@ -69,6 +69,12 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            String cad = ServicioArbolBinario.hacerOperaciones(txtCadena.Text.Trim());
+            txtResultado.Text = cad;
+        }
+
 
         //prueba para el boton de verificar si es atomica
 
