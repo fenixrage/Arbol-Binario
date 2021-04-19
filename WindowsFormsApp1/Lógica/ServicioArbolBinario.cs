@@ -267,11 +267,11 @@ namespace WindowsFormsApp1.Lógica
                 resultado = resultado.Replace(("(0/0)"), ("1"));
                 resultado = resultado.Replace(("(0/1)"), ("0"));
                 resultado = resultado.Replace(("(1/0)"), ("0"));
-                resultado = resultado.Replace(("(1/1)"), ("0"));
+                resultado = resultado.Replace(("(1/1)"), ("1"));
                 resultado = resultado.Replace(("0/0"), ("1"));
                 resultado = resultado.Replace(("0/1"), ("0"));
                 resultado = resultado.Replace(("1/0"), ("0"));
-                resultado = resultado.Replace(("1/1"), ("0"));
+                resultado = resultado.Replace(("1/1"), ("1"));
 
                 ////MAT
                 resultado = resultado.Replace(("(0$0)"), ("1"));
