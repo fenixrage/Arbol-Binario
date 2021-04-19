@@ -164,10 +164,11 @@ namespace WindowsFormsApp1
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(42, 224);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 25);
+            this.label2.Size = new System.Drawing.Size(110, 27);
             this.label2.TabIndex = 2;
             this.label2.Text = "Resultado";
             // 
@@ -194,6 +195,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.txtLimpiar);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUIArbolBinario";
             this.Text = "Arbol Binario";
