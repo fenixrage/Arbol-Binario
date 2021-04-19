@@ -202,7 +202,7 @@ namespace WindowsFormsApp1.Lógica
         {
             String cadena = "";
 
-            cadena = pCadena.Replace(" ", "").Replace("","") ;
+            cadena = pCadena.Replace(" ", "");
             
 
             return cadena;
@@ -210,77 +210,77 @@ namespace WindowsFormsApp1.Lógica
 
         public static String hacerOperaciones(String operacion)
         {
-            String resultado= null;
+            String resultado= operacion;
             ////AND
-            resultado = operacion.Replace(("(0*0)"), ("0"));
-            resultado = operacion.Replace(("(0*1)"), ("0"));
-            resultado = operacion.Replace(("(1*0)"), ("0"));
-            resultado = operacion.Replace(("(1*1)"), ("1"));
-            resultado = operacion.Replace(("0*0"), ("0"));
-            resultado = operacion.Replace(("0*1"), ("0"));
-            resultado = operacion.Replace(("1*0"), ("0"));
-            resultado = operacion.Replace(("1*1"), ("1"));
+            resultado = resultado.Replace(("(0*0)"), ("0"));
+            resultado = resultado.Replace(("(0*1)"), ("0"));
+            resultado = resultado.Replace(("(1*0)"), ("0"));
+            resultado = resultado.Replace(("(1*1)"), ("1"));
+            resultado = resultado.Replace(("0*0"), ("0"));
+            resultado = resultado.Replace(("0*1"), ("0"));
+            resultado = resultado.Replace(("1*0"), ("0"));
+            resultado = resultado.Replace(("1*1"), ("1"));
 
             ////OR
-            resultado = operacion.Replace(("(0+0)"), ("0"));
-            resultado = operacion.Replace(("(0+1)"), ("1"));
-            resultado = operacion.Replace(("(1+0)"), ("1"));
-            resultado = operacion.Replace(("(1+1)"), ("1"));
-            resultado = operacion.Replace(("0+0"), ("0"));
-            resultado = operacion.Replace(("0+1"), ("1"));
-            resultado = operacion.Replace(("1+0"), ("1"));
-            resultado = operacion.Replace(("1+1"), ("1"));
+            resultado = resultado.Replace(("(0+0)"), ("0"));
+            resultado = resultado.Replace(("(0+1)"), ("1"));
+            resultado = resultado.Replace(("(1+0)"), ("1"));
+            resultado = resultado.Replace(("(1+1)"), ("1"));
+            resultado = resultado.Replace(("0+0"), ("0"));
+            resultado = resultado.Replace(("0+1"), ("1"));
+            resultado = resultado.Replace(("1+0"), ("1"));
+            resultado = resultado.Replace(("1+1"), ("1"));
 
             ////NAND
-            resultado = operacion.Replace(("(0&0)"), ("1"));
-            resultado = operacion.Replace(("(0&1)"), ("1"));
-            resultado = operacion.Replace(("(1&0)"), ("1"));
-            resultado = operacion.Replace(("(1&1)"), ("0"));
-            resultado = operacion.Replace(("0&0"), ("1"));
-            resultado = operacion.Replace(("0&1"), ("1"));
-            resultado = operacion.Replace(("1&0"), ("1"));
-            resultado = operacion.Replace(("1&1"), ("0"));
+            resultado = resultado.Replace(("(0&0)"), ("1"));
+            resultado = resultado.Replace(("(0&1)"), ("1"));
+            resultado = resultado.Replace(("(1&0)"), ("1"));
+            resultado = resultado.Replace(("(1&1)"), ("0"));
+            resultado = resultado.Replace(("0&0"), ("1"));
+            resultado = resultado.Replace(("0&1"), ("1"));
+            resultado = resultado.Replace(("1&0"), ("1"));
+            resultado = resultado.Replace(("1&1"), ("0"));
 
             ////NOR
-            resultado = operacion.Replace(("(0%0)"), ("1"));
-            resultado = operacion.Replace(("(0%1)"), ("0"));
-            resultado = operacion.Replace(("(1%0)"), ("0"));
-            resultado = operacion.Replace(("(1%1)"), ("0"));
-            resultado = operacion.Replace(("0&0"), ("1"));
-            resultado = operacion.Replace(("0%1"), ("0"));
-            resultado = operacion.Replace(("1%0"), ("0"));
-            resultado = operacion.Replace(("1%1"), ("0"));
+            resultado = resultado.Replace(("(0%0)"), ("1"));
+            resultado = resultado.Replace(("(0%1)"), ("0"));
+            resultado = resultado.Replace(("(1%0)"), ("0"));
+            resultado = resultado.Replace(("(1%1)"), ("0"));
+            resultado = resultado.Replace(("0&0"), ("1"));
+            resultado = resultado.Replace(("0%1"), ("0"));
+            resultado = resultado.Replace(("1%0"), ("0"));
+            resultado = resultado.Replace(("1%1"), ("0"));
 
 
             ////XOR
-            resultado = operacion.Replace(("(0#0)"), ("0"));
-            resultado = operacion.Replace(("(0#1)"), ("1"));
-            resultado = operacion.Replace(("(1#0)"), ("1"));
-            resultado = operacion.Replace(("(1#1)"), ("0"));
-            resultado = operacion.Replace(("0#0"), ("0"));
-            resultado = operacion.Replace(("0#1"), ("1"));
-            resultado = operacion.Replace(("1#0"), ("1"));
-            resultado = operacion.Replace(("1#1"), ("0"));
+            resultado = resultado.Replace(("(0#0)"), ("0"));
+            resultado = resultado.Replace(("(0#1)"), ("1"));
+            resultado = resultado.Replace(("(1#0)"), ("1"));
+            resultado = resultado.Replace(("(1#1)"), ("0"));
+            resultado = resultado.Replace(("0#0"), ("0"));
+            resultado = resultado.Replace(("0#1"), ("1"));
+            resultado = resultado.Replace(("1#0"), ("1"));
+            resultado = resultado.Replace(("1#1"), ("0"));
 
             ////XNOR
-            resultado = operacion.Replace(("(0/0)"), ("1"));
-            resultado = operacion.Replace(("(0/1)"), ("0"));
-            resultado = operacion.Replace(("(1/0)"), ("0"));
-            resultado = operacion.Replace(("(1/1)"), ("0"));
-            resultado = operacion.Replace(("0/0"), ("1"));
-            resultado = operacion.Replace(("0/1"), ("0"));
-            resultado = operacion.Replace(("1/0"), ("0"));
-            resultado = operacion.Replace(("1/1"), ("0"));
+            resultado = resultado.Replace(("(0/0)"), ("1"));
+            resultado = resultado.Replace(("(0/1)"), ("0"));
+            resultado = resultado.Replace(("(1/0)"), ("0"));
+            resultado = resultado.Replace(("(1/1)"), ("0"));
+            resultado = resultado.Replace(("0/0"), ("1"));
+            resultado = resultado.Replace(("0/1"), ("0"));
+            resultado = resultado.Replace(("1/0"), ("0"));
+            resultado = resultado.Replace(("1/1"), ("0"));
 
             ////MAT
-            resultado = operacion.Replace(("(0$0)"), ("1"));
-            resultado = operacion.Replace(("(0$1)"), ("0"));
-            resultado = operacion.Replace(("(1$0)"), ("1"));
-            resultado = operacion.Replace(("(1$1)"), ("0"));
-            resultado = operacion.Replace(("0$0"), ("1"));
-            resultado = operacion.Replace(("0$1"), ("0"));
-            resultado = operacion.Replace(("1$0"), ("1"));
-            resultado = operacion.Replace(("1$1"), ("0"));
+            resultado = resultado.Replace(("(0$0)"), ("1"));
+            resultado = resultado.Replace(("(0$1)"), ("0"));
+            resultado = resultado.Replace(("(1$0)"), ("1"));
+            resultado = resultado.Replace(("(1$1)"), ("0"));
+            resultado = resultado.Replace(("0$0"), ("1"));
+            resultado = resultado.Replace(("0$1"), ("0"));
+            resultado = resultado.Replace(("1$0"), ("1"));
+            resultado = resultado.Replace(("1$1"), ("0"));
 
             return resultado;
 
