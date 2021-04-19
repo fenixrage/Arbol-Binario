@@ -50,25 +50,20 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String cad = txtCadena.Text;
-
-            cad = ServicioArbolBinario.quitarParentesisExternos(cad);
-            cad = ServicioArbolBinario.quitarEspacios(cad);
-            ServicioArbolBinario.encontrarOperadorCentral(cad);
-            txtCadena.Text = cad;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
             bool cadena = ServicioArbolBinario.verificarSiEsAtomica(txtCadena.Text.Trim());
             if (cadena == true)
             {
-                MessageBox.Show("Es operacion atomica");
+                String cad = txtCadena.Text;
+
+                cad = ServicioArbolBinario.quitarParentesisExternos(cad);
+                cad = ServicioArbolBinario.quitarEspacios(cad);
+                ServicioArbolBinario.encontrarOperadorCentral(cad);
+                txtCadena.Text = cad;
             }
             else
             {
                 MessageBox.Show("No es atomica");
-            }
+            } 
         }
 
         private void button3_Click(object sender, EventArgs e)
