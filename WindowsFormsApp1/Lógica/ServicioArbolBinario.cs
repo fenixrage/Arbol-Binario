@@ -182,7 +182,7 @@ namespace WindowsFormsApp1.Lógica
         {
             String cadena = "";
 
-            cadena = pCadena.Replace(" ", "");
+            cadena = pCadena.Replace(" ", "").Replace("","") ;
             
 
             return cadena;
