@@ -46,6 +46,7 @@ namespace WindowsFormsApp1
         {
             txtCadena.Clear();
             txtOrdenes.Clear();
+            txtResultado.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
