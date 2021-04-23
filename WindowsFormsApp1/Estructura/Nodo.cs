@@ -11,12 +11,14 @@ namespace WindowsFormsApp1.Estructura
         private String contenido;
         private Nodo izq;
         private Nodo der;
+        private Nodo padre;
 
         public Nodo(String pContenido)
         {
             contenido = pContenido;
             izq = null;
             der = null;
+            padre = null;
         }
 
         public String getContenido()
@@ -24,6 +26,10 @@ namespace WindowsFormsApp1.Estructura
             return contenido;
         }
 
+        public void setContenido(String pContenido)
+        {
+            contenido = pContenido;
+        }
 
         public Nodo getIzq()
         {
@@ -33,6 +39,16 @@ namespace WindowsFormsApp1.Estructura
         public Nodo getDer()
         {
             return der;
+        }
+
+        public Nodo getPadre()
+        {
+            return padre;
+        }
+
+        public void setPadre(Nodo pPadre)
+        {
+            padre = pPadre;
         }
 
 

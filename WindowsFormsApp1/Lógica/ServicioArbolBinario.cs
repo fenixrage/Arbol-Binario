@@ -17,44 +17,184 @@ namespace WindowsFormsApp1.Lógica
             return raiz;
         }
 
-        public static void crearArbol(String expresion)
+
+        public void setRaiz(Nodo n)
         {
-            String operadorCentral;
-            String cadenaIzquierda;
-            String cadenaDerecha;
+            raiz = n;
+        }
+
+
+
+        public static void procesarExpresion(String expresion)
+        {
+            String cadenaIzq = "";
+            String cadenaDer = "";
             int pos;
-            Nodo nvo;
 
-            expresion = quitarEspacios(expresion);
+            expresion = expresion.Trim();
+            expresion = expresion.Replace(" ", "");
 
-            if (hayParentesisExternos(expresion))
+            if (tieneParentesisExternos(expresion))
             {
-                expresion = quitarParentesisExternos(expresion);
+                expresion = expresion.Substring(1, expresion.Length - 2);
             }
 
-            pos = encontrarOperadorCentral(expresion);
-            operadorCentral = expresion.Substring(pos, 1);
-            nvo = new Nodo(operadorCentral);
-            raiz = nvo;
+            if (esExpresionAtomica(expresion))
+            {
+                pos = getPosicionNodoCentral(expresion);
+                raiz = new Nodo(expresion[pos].ToString());
+                Nodo nuevoIzq = new Nodo(expresion.Substring(0, pos));
+                Nodo nuevoDer = new Nodo(expresion.Substring(pos + 1, expresion.Length - 2));
+                raiz.setIzq(nuevoIzq);
+                raiz.setDer(nuevoDer);
+                return;
+            }
+            pos = getPosicionNodoCentral(expresion);
+            Console.WriteLine("Posicion = " + pos);
+            raiz = new Nodo(expresion[pos].ToString());
 
-            cadenaIzquierda = expresion.Substring(0, pos);
-            cadenaDerecha = expresion.Substring(pos + 1, (expresion.Length - pos - 1));
+            cadenaIzq = expresion.Substring(0, pos);
+            cadenaDer = expresion.Substring(pos + 1, (expresion.Length - pos - 1));
 
-            nvo = new Nodo(cadenaIzquierda);
-            raiz.setIzq(nvo);
-
-            nvo = new Nodo(cadenaDerecha);
-            raiz.setDer(nvo);
-
-            metodoRecursivo(raiz.getIzq());
-            metodoRecursivo(raiz.getDer());
+            llenarArbolExpresion(raiz, cadenaIzq);
+            llenarArbolExpresion(raiz, cadenaDer);
 
         }
-
-        public static void metodoRecursivo(Nodo actual)
+        public static bool esUnSoloValor(String expresion)
         {
+            expresion = expresion.Trim();
+            int bandera = 0;
 
+            bandera = expresion.IndexOf("(");
+            if (bandera > 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf(")");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("*");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("+");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("&");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("%");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("#");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("/");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            bandera = expresion.IndexOf("$");
+            if (bandera >= 0)
+            {
+                return false;
+            }
+
+            return true;
         }
+
+        public static void llenarArbolExpresion(Nodo actual, String expresion)
+        {
+            int pos = -1;
+            if (esUnSoloValor(expresion))
+            {
+                Nodo nuevo = new Nodo(expresion);
+                nuevo.setPadre(actual);
+                if (actual.getIzq() == null)
+                {
+                    actual.setIzq(nuevo);
+                }
+                else
+                {
+                    actual.setDer(nuevo);
+                }
+                return;
+            }
+
+            if (tieneParentesisExternos(expresion))
+            {
+                expresion = expresion.Substring(1, expresion.Length - 2);
+            }
+
+            if (esVariableAtomica(expresion))
+            {
+                Nodo nuevo = new Nodo(expresion);
+                nuevo.setPadre(actual);
+                if (actual.getIzq() == null)
+                {
+                    actual.setIzq(nuevo);
+                }
+                else
+                {
+                    actual.setDer(nuevo);
+                }
+                return;
+            }
+
+            if (esExpresionAtomica(expresion))
+            {
+                pos = getPosicionNodoCentral(expresion);
+                Nodo nuevo = new Nodo(expresion[pos].ToString());
+                nuevo.setPadre(actual);
+                if (actual.getIzq() == null)
+                {
+                    actual.setIzq(nuevo);
+                }
+                else
+                {
+                    actual.setDer(nuevo);
+                }
+                Nodo nuevoIzq = new Nodo(expresion.Substring(0, pos));
+                Nodo nuevoDer = new Nodo(expresion.Substring(pos + 1, expresion.Length - 2));
+                nuevo.setIzq(nuevoIzq);
+                nuevo.setDer(nuevoDer);
+                return;
+            }
+            pos = getPosicionNodoCentral(expresion);
+            Nodo n = new Nodo(expresion[pos].ToString());
+            n.setPadre(actual);
+            if (actual.getIzq() == null)
+            {
+                actual.setIzq(n);
+            }
+            else
+            {
+                actual.setDer(n);
+            }
+            llenarArbolExpresion(n, expresion.Substring(0, pos));
+            llenarArbolExpresion(n, expresion.Substring(pos + 1, expresion.Length - 2));
+        }
+
+
 
         public static String recorrePreOrden(Nodo actual, String cad)
         {
@@ -94,28 +234,36 @@ namespace WindowsFormsApp1.Lógica
             cad = recorrePostOrden(actual.getIzq(), cad);
             cad = recorrePostOrden(actual.getDer(), cad);
             cad = cad + actual.getContenido() + "-";
-            
+
             return cad;
         }
 
-        public static int encontrarOperadorCentral(String cadena)
+        public static int getPosicionNodoCentral(String expresion)
         {
-            int cont = 0;
+            int contIzq = 0;
+            int contDer = 0;
 
-            for (int i = 0; i < cadena.Length; i++)
+            for (int i = 0; i < expresion.Length; i++)
             {
-                if (cadena[i] == '(')
+                if (expresion[i] == '(')
                 {
-                    cont = cont + 1;
+                    contIzq++;
                 }
-                else if (cadena[i] == ')')
+                else if (expresion[i] == ')')
                 {
-                    cont = cont - 1;
+                    contDer++;
+                }
+                else if ((expresion[i] == '*') || (expresion[i] == '+') || (expresion[i] == '&') || (expresion[i] == '$') || (expresion[i] == '/') || (expresion[i] == '#') || (expresion[i] == '%'))
+                {
+                    if (contIzq == 0)
+                    {
+                        return i;
+                    }
                 }
 
-                if (cont == 0)
+                if (((contIzq - contDer) == 0 && ((expresion[i] == '*') || (expresion[i] == '+') || (expresion[i] == '&') || (expresion[i] == '$') || (expresion[i] == '/') || (expresion[i] == '#') || (expresion[i] == '%'))))
                 {
-                    return i + 1; ;
+                    return i;
                 }
 
             }
@@ -123,51 +271,72 @@ namespace WindowsFormsApp1.Lógica
             return -1;
         }
 
-        public static bool verificarSiEsAtomica(String cadena)
+        public static bool esVariableAtomica(String expresion)
         {
             int cont = 0;
-            foreach (char c in cadena)
+
+            for (int i = 0; i < expresion.Length; i++)
             {
-                if (c == '(')
+                if ((expresion[i] == '*') || (expresion[i] == '+') || (expresion[i] == '&') || (expresion[i] == '$') || (expresion[i] == '/') || (expresion[i] == '#') || (expresion[i] == '%'))
                 {
-                    cont = cont + 1;
+                    cont++;
                 }
-                else if (c == ')')
+                if (cont > 0)
                 {
-                    cont = cont - 1;
+                    return false;
                 }
             }
-            if (cont == 0)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
 
-        public static bool hayParentesisExternos(String cadena)
+
+        private static bool tieneParentesisExternos(String expresion)
         {
-            int cont = 0;
-            int cuantos = 0;
+            int contIzq = 0;
+            int contDer = 0;
 
-            foreach (char c in cadena)
+            if (expresion[0] != '(')
             {
-                if (c == '(')
+                return false;
+            }
+            for (int i = 1; i < expresion.Length; i++)
+            {
+                if (expresion[i] == '(')
                 {
-                    cont = cont + 1;
+                    contIzq++;
                 }
-                else if (c == ')')
+                else if (expresion[i] == ')')
                 {
-                    cont = cont - 1;
+                    contDer++;
                 }
 
-                if (cont == 0)
+                if ((contIzq - contDer == 0) && (i != expresion.Length - 1))
                 {
-                    cuantos++;
+                    return false;
                 }
             }
+            return true;
+        }
 
-            if (cuantos == 1)
+        public static bool esExpresionAtomica(String expresion)
+        {
+            int contIzq = 0;
+            int contDer = 0;
+
+            for (int i = 1; i < expresion.Length; i++)
+            {
+                if (expresion[i] == '(')
+                {
+                    contIzq++;
+                }
+                else if (expresion[i] == ')')
+                {
+                    contDer++;
+                }
+
+            }
+            if (contIzq == 0 && contDer == 0)
             {
                 return true;
             }
@@ -177,121 +346,155 @@ namespace WindowsFormsApp1.Lógica
             }
         }
 
-
-        public static String quitarParentesisExternos(String cadena)
+        public static double evaluarArbolExpresion()
         {
-            quitarEspacios(cadena);
-            bool tiene = false;
-
-            tiene = hayParentesisExternos(cadena);
-
-            if (tiene)
-            {
-               
-                 cadena = cadena.Substring(1, cadena.Length - 2);
-                
-               // cadena = cadena.Replace("(", "");
-               // cadena = cadena.Replace(")", "");
-
-            }
-
-            return cadena;
+            procesarEvaluarArbolExpresion(raiz);
+            return Double.Parse(raiz.getContenido());
         }
 
-        public static String quitarEspacios(String pCadena)
+        public static bool esHoja(Nodo actual)
         {
-            String texto = pCadena;
-
-            texto = texto.Replace(" ", "");
-   
-            return texto;
+            if (actual.getIzq() == null && actual.getDer() == null)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public static String hacerOperaciones(String operacion)
+        public static void procesarEvaluarArbolExpresion(Nodo actual)
         {
-            String resultado= operacion;
-            while(resultado.Length > 1)
+            if (actual == null)
             {
-                ////AND
-                resultado = resultado.Replace(("(0*0)"), ("0"));
-                resultado = resultado.Replace(("(0*1)"), ("0"));
-                resultado = resultado.Replace(("(1*0)"), ("0"));
-                resultado = resultado.Replace(("(1*1)"), ("1"));
-                resultado = resultado.Replace(("0*0"), ("0"));
-                resultado = resultado.Replace(("0*1"), ("0"));
-                resultado = resultado.Replace(("1*0"), ("0"));
-                resultado = resultado.Replace(("1*1"), ("1"));
-
-                ////OR
-                resultado = resultado.Replace(("(0+0)"), ("0"));
-                resultado = resultado.Replace(("(0+1)"), ("1"));
-                resultado = resultado.Replace(("(1+0)"), ("1"));
-                resultado = resultado.Replace(("(1+1)"), ("1"));
-                resultado = resultado.Replace(("0+0"), ("0"));
-                resultado = resultado.Replace(("0+1"), ("1"));
-                resultado = resultado.Replace(("1+0"), ("1"));
-                resultado = resultado.Replace(("1+1"), ("1"));
-
-                ////NAND
-                resultado = resultado.Replace(("(0&0)"), ("1"));
-                resultado = resultado.Replace(("(0&1)"), ("1"));
-                resultado = resultado.Replace(("(1&0)"), ("1"));
-                resultado = resultado.Replace(("(1&1)"), ("0"));
-                resultado = resultado.Replace(("0&0"), ("1"));
-                resultado = resultado.Replace(("0&1"), ("1"));
-                resultado = resultado.Replace(("1&0"), ("1"));
-                resultado = resultado.Replace(("1&1"), ("0"));
-
-                ////NOR
-                resultado = resultado.Replace(("(0%0)"), ("1"));
-                resultado = resultado.Replace(("(0%1)"), ("0"));
-                resultado = resultado.Replace(("(1%0)"), ("0"));
-                resultado = resultado.Replace(("(1%1)"), ("0"));
-                resultado = resultado.Replace(("0&0"), ("1"));
-                resultado = resultado.Replace(("0%1"), ("0"));
-                resultado = resultado.Replace(("1%0"), ("0"));
-                resultado = resultado.Replace(("1%1"), ("0"));
-
-
-                ////XOR
-                resultado = resultado.Replace(("(0#0)"), ("0"));
-                resultado = resultado.Replace(("(0#1)"), ("1"));
-                resultado = resultado.Replace(("(1#0)"), ("1"));
-                resultado = resultado.Replace(("(1#1)"), ("0"));
-                resultado = resultado.Replace(("0#0"), ("0"));
-                resultado = resultado.Replace(("0#1"), ("1"));
-                resultado = resultado.Replace(("1#0"), ("1"));
-                resultado = resultado.Replace(("1#1"), ("0"));
-
-                ////XNOR
-                resultado = resultado.Replace(("(0/0)"), ("1"));
-                resultado = resultado.Replace(("(0/1)"), ("0"));
-                resultado = resultado.Replace(("(1/0)"), ("0"));
-                resultado = resultado.Replace(("(1/1)"), ("1"));
-                resultado = resultado.Replace(("0/0"), ("1"));
-                resultado = resultado.Replace(("0/1"), ("0"));
-                resultado = resultado.Replace(("1/0"), ("0"));
-                resultado = resultado.Replace(("1/1"), ("1"));
-
-                ////MAT
-                resultado = resultado.Replace(("(0$0)"), ("1"));
-                resultado = resultado.Replace(("(0$1)"), ("0"));
-                resultado = resultado.Replace(("(1$0)"), ("1"));
-                resultado = resultado.Replace(("(1$1)"), ("0"));
-                resultado = resultado.Replace(("0$0"), ("1"));
-                resultado = resultado.Replace(("0$1"), ("0"));
-                resultado = resultado.Replace(("1$0"), ("1"));
-                resultado = resultado.Replace(("1$1"), ("0"));
+                return;
             }
-           
 
-            return resultado;
+            procesarEvaluarArbolExpresion(actual.getIzq());
+            procesarEvaluarArbolExpresion(actual.getDer());
 
+            if (esHoja(actual))
+            {
+                return;
+            }
+
+            int x = Int32.Parse(actual.getIzq().getContenido());
+            int y = Int32.Parse(actual.getDer().getContenido());
+
+            if (actual.getContenido() == "*")
+            {
+                int z = calcularAND(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+            else if (actual.getContenido() == "+")
+            {
+                int z = calcularOR(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+            else if (actual.getContenido() == "&")
+            {
+                int z = calcularNAND(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+            else if (actual.getContenido() == "%")
+            {
+                int z = calcularNOR(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+            else if (actual.getContenido() == "#")
+            {
+                int z = calcularXOR(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+            else if (actual.getContenido() == "/")
+            {
+                int z = calcularXNOR(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+            else if (actual.getContenido() == "$")
+            {
+                int z = calcularMAT(x, y);
+                actual.setContenido(z.ToString());
+                return;
+            }
+        }
+
+        private static int calcularAND(int p, int q)
+        {
+            int res = 0;
+            if (p == 1 && q == 1)
+            {
+                res = 1;
+            }
+            return res;
+        }
+
+        private static int calcularNAND(int p, int q)
+        {
+            int res = 1;
+            if (p == 1 && q == 1)
+            {
+                res = 0;
+            }
+            return res;
+        }
+
+        private static int calcularOR(int p, int q)
+        {
+            int res = 1;
+            if (p == 0 && q == 0)
+            {
+                res = 0;
+            }
+            return res;
+        }
+
+        private static int calcularNOR(int p, int q)
+        {
+            int res = 0;
+            if (p == 0 && q == 0)
+            {
+                res = 1;
+            }
+            return res;
+        }
+
+        private static int calcularXOR(int p, int q)
+        {
+            int res = 0;
+            if ((p == 0 && q == 1) || (p == 1 && q == 0))
+            {
+                res = 1;
+            }
+            return res;
+        }
+
+        private static int calcularXNOR(int p, int q)
+        {
+            int res = 1;
+            if ((p == 0 && q == 1) || (p == 1 && q == 0))
+            {
+                res = 0;
+            }
+            return res;
+        }
+        private static int calcularMAT(int p, int q)
+        {
+            int res = 0;
+            if ((p == 0 && q == 0) || (p == 1 && q == 0))
+            {
+                res = 1;
+            }
+            return res;
         }
 
     }
- 
-    
+
+
 
 }
 

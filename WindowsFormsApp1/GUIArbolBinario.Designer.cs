@@ -61,17 +61,7 @@ namespace WindowsFormsApp1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(718, 168);
             this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(659, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+
             // 
             // label1
             // 
@@ -171,17 +161,7 @@ namespace WindowsFormsApp1
             this.label2.Size = new System.Drawing.Size(110, 27);
             this.label2.TabIndex = 2;
             this.label2.Text = "Resultado";
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(527, 270);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(203, 41);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Hacer Operacion";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+
             // 
             // GUIArbolBinario
             // 

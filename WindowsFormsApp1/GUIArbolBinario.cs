@@ -20,26 +20,15 @@ namespace WindowsFormsApp1
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
-            ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
-            String resultado = null;
-            String cadena = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), resultado);
-            txtOrdenes.Text = cadena;
+
         }
 
         private void btnInOrden_Click(object sender, EventArgs e)
         {
-            ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
-            String resultado = null;
-            String cadena = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(), resultado);
-            txtOrdenes.Text = cadena;
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
-            ServicioArbolBinario.crearArbol(txtCadena.Text.Trim());
-            String resultado = null;
-            String cadena = ServicioArbolBinario.recorrePostOrden(ServicioArbolBinario.getRaiz(), resultado);
-            txtOrdenes.Text = cadena;
         }
 
         private void txtLimpiar_Click(object sender, EventArgs e)
@@ -49,29 +38,6 @@ namespace WindowsFormsApp1
             txtResultado.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            bool cadena = ServicioArbolBinario.verificarSiEsAtomica(txtCadena.Text.Trim());
-            if (cadena == true)
-            {
-                String cad = txtCadena.Text;
-
-                cad = ServicioArbolBinario.quitarParentesisExternos(cad);
-                cad = ServicioArbolBinario.quitarEspacios(cad);
-                ServicioArbolBinario.encontrarOperadorCentral(cad);
-                txtCadena.Text = cad;
-            }
-            else
-            {
-                MessageBox.Show("No es atomica");
-            } 
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            String cad = ServicioArbolBinario.hacerOperaciones(txtCadena.Text.Trim());
-            txtResultado.Text = cad;
-        }
 
 
         //prueba para el boton de verificar si es atomica
