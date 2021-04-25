@@ -20,15 +20,26 @@ namespace WindowsFormsApp1
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
-
+            String original = "";
+            String resultado;
+            resultado = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), original);
+            txtOrdenes.Text = resultado;
         }
 
         private void btnInOrden_Click(object sender, EventArgs e)
         {
+            String original = "";
+            String resultado;
+            resultado = ServicioArbolBinario.recorreInOrden(ServicioArbolBinario.getRaiz(), original);
+            txtOrdenes.Text = resultado;
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
+            String original = "";
+            String resultado;
+            resultado = ServicioArbolBinario.recorrePostOrden(ServicioArbolBinario.getRaiz(), original);
+            txtOrdenes.Text = resultado;
         }
 
         private void txtLimpiar_Click(object sender, EventArgs e)
@@ -37,6 +48,26 @@ namespace WindowsFormsApp1
             txtOrdenes.Clear();
             txtResultado.Clear();
         }
+
+        private void btnGenerarArbol_Click(object sender, EventArgs e)
+        {
+            
+            ServicioArbolBinario.procesarExpresion(txtCadena.Text);
+
+        }
+
+        private void btnResultado_Click(object sender, EventArgs e)
+        {
+            String resultado;
+            double numero;
+
+            numero = ServicioArbolBinario.evaluarArbolExpresion();
+            resultado = Convert.ToString(numero);
+
+            txtResultado.Text = resultado;
+        }
+
+
 
 
 

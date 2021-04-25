@@ -191,7 +191,7 @@ namespace WindowsFormsApp1.Lógica
                 actual.setDer(n);
             }
             llenarArbolExpresion(n, expresion.Substring(0, pos));
-            llenarArbolExpresion(n, expresion.Substring(pos + 1, expresion.Length - 2));
+            llenarArbolExpresion(n, expresion.Substring(pos + 1, pos));
         }
 
 
@@ -300,7 +300,7 @@ namespace WindowsFormsApp1.Lógica
             {
                 return false;
             }
-            for (int i = 1; i < expresion.Length; i++)
+            for (int i = 0; i < expresion.Length; i++)
             {
                 if (expresion[i] == '(')
                 {
@@ -324,7 +324,7 @@ namespace WindowsFormsApp1.Lógica
             int contIzq = 0;
             int contDer = 0;
 
-            for (int i = 1; i < expresion.Length; i++)
+            for (int i = 0; i < expresion.Length; i++)
             {
                 if (expresion[i] == '(')
                 {

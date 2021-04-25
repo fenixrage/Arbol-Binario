@@ -31,7 +31,6 @@ namespace WindowsFormsApp1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUIArbolBinario));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCadena = new System.Windows.Forms.TextBox();
             this.btnPostOrden = new System.Windows.Forms.Button();
@@ -42,14 +41,14 @@ namespace WindowsFormsApp1
             this.txtLimpiar = new System.Windows.Forms.Button();
             this.txtResultado = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnGenerarArbol = new System.Windows.Forms.Button();
+            this.btnResultado = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtCadena);
             this.panel1.Controls.Add(this.btnPostOrden);
@@ -57,36 +56,39 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(this.btnInOrden);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnPreOrden);
-            this.panel1.Location = new System.Drawing.Point(12, 33);
+            this.panel1.Location = new System.Drawing.Point(9, 27);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(718, 168);
+            this.panel1.Size = new System.Drawing.Size(540, 137);
             this.panel1.TabIndex = 0;
-
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 18);
+            this.label1.Location = new System.Drawing.Point(18, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 25);
+            this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Operación";
             // 
             // txtCadena
             // 
             this.txtCadena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCadena.Location = new System.Drawing.Point(152, 15);
+            this.txtCadena.Location = new System.Drawing.Point(114, 12);
+            this.txtCadena.Margin = new System.Windows.Forms.Padding(2);
             this.txtCadena.Name = "txtCadena";
-            this.txtCadena.Size = new System.Drawing.Size(501, 30);
+            this.txtCadena.Size = new System.Drawing.Size(377, 26);
             this.txtCadena.TabIndex = 0;
             // 
             // btnPostOrden
             // 
             this.btnPostOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPostOrden.Location = new System.Drawing.Point(504, 104);
+            this.btnPostOrden.Location = new System.Drawing.Point(378, 84);
+            this.btnPostOrden.Margin = new System.Windows.Forms.Padding(2);
             this.btnPostOrden.Name = "btnPostOrden";
-            this.btnPostOrden.Size = new System.Drawing.Size(149, 41);
+            this.btnPostOrden.Size = new System.Drawing.Size(112, 33);
             this.btnPostOrden.TabIndex = 8;
             this.btnPostOrden.Text = "PostOrden";
             this.btnPostOrden.UseVisualStyleBackColor = true;
@@ -95,17 +97,19 @@ namespace WindowsFormsApp1
             // txtOrdenes
             // 
             this.txtOrdenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrdenes.Location = new System.Drawing.Point(152, 68);
+            this.txtOrdenes.Location = new System.Drawing.Point(114, 55);
+            this.txtOrdenes.Margin = new System.Windows.Forms.Padding(2);
             this.txtOrdenes.Name = "txtOrdenes";
-            this.txtOrdenes.Size = new System.Drawing.Size(501, 30);
+            this.txtOrdenes.Size = new System.Drawing.Size(377, 26);
             this.txtOrdenes.TabIndex = 4;
             // 
             // btnInOrden
             // 
             this.btnInOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInOrden.Location = new System.Drawing.Point(332, 104);
+            this.btnInOrden.Location = new System.Drawing.Point(249, 84);
+            this.btnInOrden.Margin = new System.Windows.Forms.Padding(2);
             this.btnInOrden.Name = "btnInOrden";
-            this.btnInOrden.Size = new System.Drawing.Size(149, 41);
+            this.btnInOrden.Size = new System.Drawing.Size(112, 33);
             this.btnInOrden.TabIndex = 7;
             this.btnInOrden.Text = "InOrden";
             this.btnInOrden.UseVisualStyleBackColor = true;
@@ -115,18 +119,20 @@ namespace WindowsFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(60, 73);
+            this.label3.Location = new System.Drawing.Point(45, 59);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 25);
+            this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Orden";
             // 
             // btnPreOrden
             // 
             this.btnPreOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreOrden.Location = new System.Drawing.Point(152, 104);
+            this.btnPreOrden.Location = new System.Drawing.Point(114, 84);
+            this.btnPreOrden.Margin = new System.Windows.Forms.Padding(2);
             this.btnPreOrden.Name = "btnPreOrden";
-            this.btnPreOrden.Size = new System.Drawing.Size(149, 41);
+            this.btnPreOrden.Size = new System.Drawing.Size(112, 33);
             this.btnPreOrden.TabIndex = 6;
             this.btnPreOrden.Text = "Preorden";
             this.btnPreOrden.UseVisualStyleBackColor = true;
@@ -135,9 +141,10 @@ namespace WindowsFormsApp1
             // txtLimpiar
             // 
             this.txtLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLimpiar.Location = new System.Drawing.Point(409, 270);
+            this.txtLimpiar.Location = new System.Drawing.Point(427, 218);
+            this.txtLimpiar.Margin = new System.Windows.Forms.Padding(2);
             this.txtLimpiar.Name = "txtLimpiar";
-            this.txtLimpiar.Size = new System.Drawing.Size(100, 41);
+            this.txtLimpiar.Size = new System.Drawing.Size(75, 33);
             this.txtLimpiar.TabIndex = 9;
             this.txtLimpiar.Text = "Limpiar";
             this.txtLimpiar.UseVisualStyleBackColor = true;
@@ -146,9 +153,10 @@ namespace WindowsFormsApp1
             // txtResultado
             // 
             this.txtResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultado.Location = new System.Drawing.Point(166, 224);
+            this.txtResultado.Location = new System.Drawing.Point(124, 182);
+            this.txtResultado.Margin = new System.Windows.Forms.Padding(2);
             this.txtResultado.Name = "txtResultado";
-            this.txtResultado.Size = new System.Drawing.Size(501, 30);
+            this.txtResultado.Size = new System.Drawing.Size(377, 26);
             this.txtResultado.TabIndex = 3;
             // 
             // label2
@@ -156,27 +164,53 @@ namespace WindowsFormsApp1
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 227);
+            this.label2.Location = new System.Drawing.Point(27, 184);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 27);
+            this.label2.Size = new System.Drawing.Size(93, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Resultado";
-
+            // 
+            // btnGenerarArbol
+            // 
+            this.btnGenerarArbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarArbol.Location = new System.Drawing.Point(27, 218);
+            this.btnGenerarArbol.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarArbol.Name = "btnGenerarArbol";
+            this.btnGenerarArbol.Size = new System.Drawing.Size(131, 33);
+            this.btnGenerarArbol.TabIndex = 10;
+            this.btnGenerarArbol.Text = "Generar arbol";
+            this.btnGenerarArbol.UseVisualStyleBackColor = true;
+            this.btnGenerarArbol.Click += new System.EventHandler(this.btnGenerarArbol_Click);
+            // 
+            // btnResultado
+            // 
+            this.btnResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResultado.Location = new System.Drawing.Point(187, 218);
+            this.btnResultado.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResultado.Name = "btnResultado";
+            this.btnResultado.Size = new System.Drawing.Size(111, 33);
+            this.btnResultado.TabIndex = 11;
+            this.btnResultado.Text = "Resultado";
+            this.btnResultado.UseVisualStyleBackColor = true;
+            this.btnResultado.Click += new System.EventHandler(this.btnResultado_Click);
             // 
             // GUIArbolBinario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(751, 323);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(563, 262);
+            this.Controls.Add(this.btnResultado);
+            this.Controls.Add(this.btnGenerarArbol);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtLimpiar);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GUIArbolBinario";
             this.Text = "Arbol Binario";
             this.panel1.ResumeLayout(false);
@@ -198,8 +232,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnPreOrden;
         private System.Windows.Forms.Button btnInOrden;
         private System.Windows.Forms.Button btnPostOrden;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button txtLimpiar;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnGenerarArbol;
+        private System.Windows.Forms.Button btnResultado;
     }
 }
