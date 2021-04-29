@@ -67,12 +67,20 @@ namespace WindowsFormsApp1
             txtResultado.Text = resultado;
         }
 
+        private void btnContarNodos_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("La cantidad de nodos es: "+ ServicioArbolBinario.cantidad());     
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("La cantidad de nodos hoja es: " + ServicioArbolBinario.contarCantidadDeNodos());
+        }
 
-
-
-
-        //prueba para el boton de verificar si es atomica
-
+        private void btnAltura_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("La altura del arbol es de: " + ServicioArbolBinario.retornarAltura() + " niveles");
+        }
 
         /*
         private void button2_Click(object sender, EventArgs e)

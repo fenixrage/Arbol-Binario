@@ -10,7 +10,8 @@ namespace WindowsFormsApp1.Lógica
     class ServicioArbolBinario
     {
         private static Nodo raiz;
-
+        private static int cant;
+        private static int altura;
 
         public static Nodo getRaiz()
         {
@@ -492,6 +493,68 @@ namespace WindowsFormsApp1.Lógica
             return res;
         }
 
+
+        public static void graficarArbol()
+        {
+
+        }
+
+
+        private static void cantidadNodosHoja(Nodo reco)
+        {
+            if (reco != null)
+            {
+                if (reco.getIzq() == null && reco.getDer() == null)
+                {
+                    cant++;
+                }
+                cantidadNodosHoja(reco.getIzq());
+                cantidadNodosHoja(reco.getDer());
+            }
+        }
+
+        public static int contarCantidadDeNodos()
+        {
+            cant = 0;
+            cantidadNodosHoja(raiz);
+            return cant;
+        }
+
+        private static void cantidad(Nodo reco)
+        {
+            if (reco != null)
+            {
+                cant++;
+                cantidad(reco.getIzq());
+                cantidad(reco.getDer());
+            }
+        }
+        public static int cantidad()
+        {
+            cant = 0;
+            cantidad(raiz);
+            return cant;
+        }
+
+        private static void retornarAltura(Nodo reco, int nivel)
+        {
+            if (reco != null)
+            {
+                retornarAltura(reco.getIzq(), nivel + 1);
+                if (nivel > altura)
+                {
+                    altura = nivel;
+                }
+                retornarAltura(reco.getDer(), nivel + 1);
+            }
+        }
+
+        public static int retornarAltura()
+        {
+            altura = 0;
+            retornarAltura(raiz, 1);
+            return altura;
+        }
     }
 
 
