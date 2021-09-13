@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
             String resultado;
             resultado = ServicioArbolBinario.recorrePreOrden(ServicioArbolBinario.getRaiz(), original);
             txtOrdenes.Text = resultado;
+            ///comentario webon
         }
 
         private void btnInOrden_Click(object sender, EventArgs e)
